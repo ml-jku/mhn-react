@@ -1,4 +1,4 @@
-# HMNreact
+# MHNreact
 Modern Hopfield Network (MHN) for template relevance prediction
 
 # Modern Hopfield Networks for Few- and Zero-Shot Reaction Prediction
