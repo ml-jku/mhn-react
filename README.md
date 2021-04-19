@@ -39,18 +39,5 @@ To cite this work, you can use the following bibtex entry:
 }
 ```
 
-## Environment
-
-The code in this repository (excluding the sub-repositories) should run as-is in an environment as specified by `requirements.txt`.
-When using `conda`, such an environment can be set up using
-```
-conda create -n mhn --file requirements.txt -c pytorch
-```
-**if** you remove the `autograd` dependency!
-`autograd` must be installed with `pip` individually. 
-Alternatively, you can use `-c conda-forge`, which does provide `autograd`.
-
 ## References
-
-
  - <span id="mhn">Ramsauer et al.(2020).</span> ICLR, ... ([pdf](https://arxiv.org/abs/2008.02217))
