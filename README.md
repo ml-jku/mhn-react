@@ -7,13 +7,8 @@ Philipp Seidl, Philipp Renz,
 Natalia Dyubankova, Paulo Neves, Jonas Verhoeven, Jörg K. Wegner, 
 Sepp Hochreiter, Günter Klambauer
 
-MHNreact is using a MHN [(Ramsauer et al., 2121)](#mhn) for reaction template relevance prediction. 
+MHNreact is using a modern Hopfield network [(Ramsauer et al., 2121)](#mhn) for reaction template relevance prediction. 
 
-### Sub-repositories
-
-This repository contains code for the LSTM addition, traffic forecasting and pendulum experiments.
-The neural arithmetic experiments were conducted on a [fork](https://github.com/hoedt/stable-nalu) of the repository from [Madsen et al. (2020)](#nau).
-The experiments in hydrology were conducted using the [neuralhydrology](https://github.com/neuralhydrology/neuralhydrology) framework.
 
 ## Paper
 
@@ -40,4 +35,4 @@ To cite this work, you can use the following bibtex entry:
 ```
 
 ## References
- - <span id="mhn">Ramsauer et al.(2020).</span> ICLR, ... ([pdf](https://arxiv.org/abs/2008.02217))
+ - <span id="mhn">Ramsauer et al.(2020).</span> ICLR2021 ([pdf](https://arxiv.org/abs/2008.02217))
