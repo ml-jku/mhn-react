@@ -7,7 +7,7 @@ Philipp Seidl, Philipp Renz,
 Natalia Dyubankova, Paulo Neves, Jonas Verhoeven, Jörg K. Wegner, 
 Sepp Hochreiter, Günter Klambauer
 
-MHNreact is using a modern Hopfield network [(Ramsauer et al., 2121)](#mhn) for reaction template relevance prediction. 
+MHNreact is using a modern Hopfield network [(Ramsauer et al., 2021)](#mhn) for reaction template relevance prediction. 
 
 
 ## Paper
