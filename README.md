@@ -22,8 +22,7 @@ To find such routes, computer-assisted synthesis planning (CASP) methods are emp
 In this study, we model single-step retrosynthesis in a template-based approach using modern Hopfield networks (MHNs).
 We adapt MHNs to associate different modalities, reaction templates and molecules, which allows the model to leverage structural information about reaction templates.
 This approach significantly improves the performance of template relevance prediction, especially for templates with few or zero training examples.
-With inference speed several times faster than baseline methods, we improve predictive performance for top-$\mathrm{k}$ 
-exact match accuracy for $\mathrm{k}\geq5$ in the retrosynthesis benchmark USPTO-50k. 
+With inference speed several times faster than baseline methods, we improve predictive performance for top-k exact match accuracy for k≥5 in the retrosynthesis benchmark USPTO-50k. 
 
 ### Citation
 
