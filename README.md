@@ -4,7 +4,7 @@ Modern Hopfield Network (MHN) for template relevance prediction
 # Modern Hopfield Networks for Few- and Zero-Shot Reaction Prediction
 
 Philipp Seidl, Philipp Renz, 
-Natalia Dyubankova, Paulo Neves, Jonas Verhoeven, Jörg K. Wegner, 
+Natalia Dyubankova, Paulo Neves, Jonas Verhoeven, Marwin Segler, Jörg K. Wegner, 
 Sepp Hochreiter, Günter Klambauer
 
 MHNreact is using a modern Hopfield network [(Ramsauer et al., 2021)](#mhn) for reaction template relevance prediction. 
@@ -16,15 +16,22 @@ MHNreact is using a modern Hopfield network [(Ramsauer et al., 2021)](#mhn) for 
 
 ### Abstract
 
-An essential step in the discovery of new drugs and materials is the synthesis of a molecule that exists so far only as an idea to test its biological and physical properties. While computer-aided design of virtual molecules has made large progress, computer-assisted synthesis planning (CASP) to realize physical molecules is still in its infancy and lacks a performance level that would enable large-scale molecule discovery. CASP supports the search for multi-step synthesis routes, which is very challenging due to high branching factors in each synthesis step and the hidden rules that govern the reactions. The central and repeatedly applied step in CASP is reaction prediction, for which machine learning methods yield the best performance. We propose a novel reaction prediction approach that uses a deep learning architecture with modern Hopfield networks (MHNs) that is optimized by contrastive learning. An MHN is an associative memory that can store and retrieve chemical reactions in each layer of a deep learning architecture. We show that our MHN contrastive learning approach enables few- and zero-shot learning for reaction prediction which, in contrast to previous methods, can deal with rare, single, or even no training example(s) for a reaction. On a well established benchmark, our MHN approach pushes the state-of-the-art performance up by a large margin as it improves the predictive top-100 accuracy from 0.858±0.004 to 0.959±0.004. This advance might pave the way to large-scale molecule discovery.
+Finding synthesis routes for molecules of interest is an essential step in the discovery
+of new drugs and materials.
+To find such routes, computer-assisted synthesis planning (CASP) methods are employed, which rely on a model of chemical reactivity.
+In this study, we model single-step retrosynthesis in a template-based approach using modern Hopfield networks (MHNs).
+We adapt MHNs to associate different modalities, reaction templates and molecules, which allows the model to leverage structural information about reaction templates.
+This approach significantly improves the performance of template relevance prediction, especially for templates with few or zero training examples.
+With inference speed several times faster than baseline methods, we improve predictive performance for top-$\mathrm{k}$ 
+exact match accuracy for $\mathrm{k}\geq5$ in the retrosynthesis benchmark USPTO-50k. 
 
 ### Citation
 
 To cite this work, you can use the following bibtex entry:
  ```bib
 @report{seidl2021modern,
-	author = {Seidl, Philipp and Renz, Philipp and Dyubankova, Natalia and Neves, Paulo and Verhoeven, Jonas and Wegner, J{\"o}rg K. and Hochreiter, Sepp and Klambauer, G{\"u}nter},
-	title = {Modern Hopfield Networks for Few- and Zero-Shot Reaction Prediction},
+	author = {Seidl, Philipp and Renz, Philipp and Dyubankova, Natalia and Neves, Paulo and Verhoeven, Jonas and Segler, Marwin and Wegner, J{\"o}rg K. and Hochreiter, Sepp and Klambauer, G{\"u}nter},
+	title = {Modern Hopfield Networks for Few- and Zero-Shot Reaction Template Prediction},
 	institution = {Institute for Machine Learning, Johannes Kepler University, Linz},
 	type = {preprint},
 	date = {2021},
