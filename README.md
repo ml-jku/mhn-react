@@ -52,15 +52,18 @@ The code was tested with:
 - CGRtools (only for preparing USPTO-golden)
 
 
-A second option is to run (and hope for the best ;)
+A second option is to run
 ```bash
 conda create -n mhnreact_env python=3.8
-conda activate mhnreact_env #doesn't work unfortunately :S
+eval "$(conda shell.bash hook)"
+conda activate mhnreact_env
+conda install -c conda-forge rdkit
 pip install torch scipy ipykernel matplotlib sklearn swifter
 cd data/temprel-fortunato/template-relevance-master/
 pip install -e .
 pip install -e "git://github.com/connorcoley/rdchiral.git#egg=rdchiral"
 ```
+which is equivialent to running the script ```bash ./scripts/make_env.sh```
 
 ### Docker
 
