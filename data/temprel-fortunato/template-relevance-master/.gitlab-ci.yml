@@ -1,0 +1,21 @@
+image: docker:stable
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  LATEST_TAG: $CI_REGISTRY_IMAGE:latest
+
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - docker build -t $LATEST_TAG .
+    - docker push $LATEST_TAG
+  only:
+    - /^master$/

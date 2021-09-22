@@ -1,0 +1,16 @@
+# Compiled Python modules
+*.pyc
+*.so
+*.pyd
+
+# artfacts from using JupyterLab
+.jupyter
+*ipynb_checkpoints*
+
+# raw data
+*data/*
+
+# example
+*example/*
+
+.alias

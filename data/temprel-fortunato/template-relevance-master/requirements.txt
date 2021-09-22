@@ -1,0 +1,12 @@
+hdbscan
+joblib
+jupyter
+matplotlib
+numpy
+pandas
+pillow
+rdchiral
+requests
+scikit-learn
+scipy
+seaborn
