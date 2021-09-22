@@ -86,6 +86,9 @@ USPTO-lg as well as USPTO-full are not contained due to their size, and would ha
 ## Training
 
 Models can be trained using ````python mhnreact/train.py -m````
+
+Selected calls are documented within ````./notebooks/*_training_*.ipynb````.
+
 Arguments are documented within the module which can be retreived by adding ```--help``` to the call. Within the ```notebooks``` folder there are notebooks containing several examples.
 
 Some main parameters are: 
