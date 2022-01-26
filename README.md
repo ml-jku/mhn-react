@@ -21,10 +21,11 @@ Adapting modern Hopfield networks [(Ramsauer et al., 2021)](#mhn) (MHN) to assoc
 
 Philipp Seidl, Philipp Renz, Natalia Dyubankova, Paulo Neves, Jonas Verhoeven, Marwin Segler, Jörg K. Wegner, Sepp Hochreiter, Günter Klambauer
 
-Finding synthesis routes for molecules of interest is an essential step in the discovery of new drugs and materials. To find such routes, computer-assisted synthesis planning (CASP) methods are employed which rely on a model of chemical reactivity.
-In this study, we model single-step retrosynthesis in a template-based approach using modern Hopfield networks (MHNs). We adapt MHNs to associate different modalities, reaction templates and molecules, which allows the model to leverage structural information about reaction templates.
-This approach significantly improves the performance of template relevance prediction, especially for templates with few or zero training examples.
-With inference speed several times faster than that of baseline methods, we improve predictive performance for top-k exact match accuracy for k≥5 in the retrosynthesis benchmark USPTO-50k.
+Finding synthesis routes for molecules of interest is essential in the discovery of new drugs and materials. To find such routes, computer-assisted synthesis planning (CASP) methods are employed, which rely on a single-step model of chemical reactivity. In this study, we introduce a template-based single-step retrosynthesis model based on Modern Hopfield Networks, which learn an encoding of both molecules and reaction templates in order to predict the relevance of templates for a given molecule. The template representation allows generalization across different reactions and significantly improves the performance of template relevance prediction, especially for templates with few or zero training examples. With inference speed up to orders of magnitude faster than baseline methods, we improve or match the state-of-the-art performance for top-k exact match accuracy for k ≥ 3 in the retrosynthesis benchmark USPTO-50k.
+
+## Minimal working example
+
+Opent the following colab for a quick training example [train-colab](https://colab.research.google.com/github/ml-jku/mhn-react/blob/main/notebooks/colab_MHNreact_demo.ipynb).
 
 ## Environment
 
@@ -112,19 +113,25 @@ python -m mhnreact.train --model_type=mhn --fp_size=4096 --fp_type morgan --temp
 
 How to load in trained models can be seen in ```./examples/20_evaluation.ipynb```. The model is then used to predict on a test set.
 
+## Train on custom data
+
+Preprocess the data in a format as can be found in ````./data/USPTO_50k_MHN_prepro.csv```` and use the argument ```--csv_path```.
+
 ## Citation
 
 To cite this work, you can use the following bibtex entry:
  ```bibtex
-@report{seidl2021modern,
+@article{seidl2021modern,
 	author = {Seidl, Philipp and Renz, Philipp and Dyubankova, Natalia and Neves, Paulo and Verhoeven, Jonas and Segler, Marwin and Wegner, J{\"o}rg K. and Hochreiter, Sepp and Klambauer, G{\"u}nter},
-	title = {Modern Hopfield Networks for Few- and Zero-Shot Reaction Prediction},
+	title = {Improving Few- and Zero-Shot Reaction Template Prediction Using Modern Hopfield Networks},
+	journal = {Journal of Chemical Information and Modeling},
+	volume = {0},
+	number = {0},
+	pages = {null},
 	institution = {Institute for Machine Learning, Johannes Kepler University, Linz},
-	type = {preprint},
-	date = {2021},
-	url = {http://arxiv.org/abs/2104.03279},
-	eprinttype = {arxiv},
-	eprint = {2104.03279},
+	year = {2022},
+	doi = {10.1021/acs.jcim.1c01065},
+	url = {https://doi.org/10.1021/acs.jcim.1c01065},
 }
  ```
 
