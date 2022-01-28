@@ -17,7 +17,8 @@ Adapting modern Hopfield networks [(Ramsauer et al., 2021)](#mhn) (MHN) to assoc
 
 ![overview_image](data/figs/overview_tikz_transp.png?raw=true "Overview Figure")
 
-## Modern Hopfield Networks for Few- and Zero-Shot Reaction Template Prediction
+## Improving Few- and Zero-Shot Reaction Template Prediction Using Modern Hopfield Networks
+[paper](https://pubs.acs.org/doi/10.1021/acs.jcim.1c01065)
 
 Philipp Seidl, Philipp Renz, Natalia Dyubankova, Paulo Neves, Jonas Verhoeven, Marwin Segler, Jörg K. Wegner, Sepp Hochreiter, Günter Klambauer
 
