@@ -219,7 +219,7 @@ def convert_smiles_to_fp(list_of_smiles, fp_size=2048, is_smarts=False, which='m
     if njobs>1:
     #with Pool(njobs) as pool:
     #    fps = pool.map(_getFingerprint, inp)
-        fps = process_map(_getFingerprint, inp, max_workers=njobs, chunksize=1, mininterval=0)
+        fps = process_map(_getFingerprint, inp, max_workers=njobs, chunksize=1, mininterval=1)
     else:
         fps = [getFingerprint(smi, fp_size=fp_size, radius=radius, is_smarts=is_smarts, which=which) for smi in list_of_smiles]
     return np.array(fps)
