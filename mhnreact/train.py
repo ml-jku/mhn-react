@@ -316,7 +316,7 @@ def set_up_template_encoder(args, clf, label_to_n_train_samples=None, template_l
             idx_lowest_var_half = v.argsort()[:(pre_comp_templates.shape[1]//REPLACE_FACTOR)]
             
             # the new zero-init-vectors
-            pre = np.zeros([pre_comp_templates.shape[0], pre_comp_templates.shape[1]//REPLACE_FACTOR]).astype(np.float)
+            pre = np.zeros([pre_comp_templates.shape[0], pre_comp_templates.shape[1]//REPLACE_FACTOR]).astype(np.float32)
             print(pre.shape, l_mask.shape, l_mask.sum()) #(616, 1700) (11790,) 519
             print(pre_comp_templates.shape, len(template_list)) #(616, 17000) 616
             # only the ones with >thresh will receive a random vect

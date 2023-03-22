@@ -180,7 +180,7 @@ class FPMolEncoder(Encoder):
     def convert_smiles_to_tensor(self, list_of_smiles):
         fps = convert_smiles_to_fp(list_of_smiles, fp_size=self.config.fp_size, 
                                    which=self.config.fingerprint_type, radius=self.config.fp_radius)
-        fps_tensor = torch.from_numpy(fps.astype(np.float)).to(dtype=torch.float).to(self.config.device)
+        fps_tensor = torch.from_numpy(fps.astype(np.float32)).to(dtype=torch.float).to(self.config.device)
         return fps_tensor
 
 class TemplateEncoder(Encoder):
