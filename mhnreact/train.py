@@ -726,7 +726,7 @@ if __name__ == '__main__':
         #forward
         split = 'test'
         print('len(X_fp[test]):',len(X_fp[split]))
-        y[split] = np.zeros(len(X[split])).astype(np.int)
+        y[split] = np.zeros(len(X[split])).astype(np.int32)
         clf.eval()
         if y_preds is None:
             y_preds = clf.evaluate(X_fp[split], X_fp[split], y[split], is_smiles=False,
