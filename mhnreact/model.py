@@ -346,13 +346,13 @@ class MHN(nn.Module):
         templates: None or newly given templates if not instanciated
         returns logits ranking the templates for each molecule
         """
-        #states_emb = self.fcfe(state_fp)
+
         bs = m.shape[0] #batch_size
-        #templates = self.temp_emb(torch.arange(0,2000).long())
+
         if (templates is None) and (self.X is None) and (self.templates is None):
             raise Exception('Either pass in templates, or init templates by runnting clf.set_templates')
         n_temp = len(templates) if templates is not None else len(self.templates)
-        if self.training or (templates is None) or (self.X is not None):
+        if self.training or (templates is not None) or (self.X is None):
             templates = templates if templates is not None else self.templates
             X = self.template_encoder(templates)
         else:
