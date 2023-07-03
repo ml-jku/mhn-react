@@ -352,7 +352,7 @@ class MHN(nn.Module):
         if (templates is None) and (self.X is None) and (self.templates is None):
             raise Exception('Either pass in templates, or init templates by runnting clf.set_templates')
         n_temp = len(templates) if templates is not None else len(self.templates)
-        if self.training or (templates is None) or (self.X is not None):
+        if self.training or (templates is not None) or (self.X is None):
             templates = templates if templates is not None else self.templates
             X = self.template_encoder(templates)
         else:
