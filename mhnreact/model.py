@@ -283,14 +283,16 @@ class MHN(nn.Module):
                 self.layer.templates = self.templates
                 self.layer.set_templates_recursively()
 
-    def update_template_embedding(self,fp_size=2048, radius=4, which='rdk', learnable=False, njobs=1, only_templates_in_batch=False):
-        print('updating template-embedding; (just computing the template-fingerprint and using that)')
+    def update_template_embedding(self,fp_size=2048, radius=4, which='rdk', learnable=False, njobs=1, only_templates_in_batch=False, template_list=None, verbose=True):
+        if verbose: print('updating template-embedding; (just computing the template-fingerprint and using that)')
         bs = self.config.batch_size
 
-        split_template_list = [str(t).split('>')[0].split('.') for t in self.template_list]
+        template_list = self.template_list if template_list is None else template_list
+
+        split_template_list = [str(t).split('>')[0].split('.') for t in template_list]
         templates_np = convert_smiles_to_fp(split_template_list, is_smarts=True, fp_size=fp_size, radius=radius, which=which, njobs=njobs)
 
-        split_template_list = [str(t).split('>')[-1].split('.') for t in self.template_list]
+        split_template_list = [str(t).split('>')[-1].split('.') for t in template_list]
         reactants_np = convert_smiles_to_fp(split_template_list, is_smarts=True, fp_size=fp_size, radius=radius, which=which, njobs=njobs)
 
         template_representation = templates_np-(reactants_np*0.5)
@@ -339,6 +341,33 @@ class MHN(nn.Module):
     def forward_smiles(self, list_of_smiles, templates=None):
         state_tensor = self.mol_encoder.convert_smiles_to_tensor(list_of_smiles)
         return self.forward(state_tensor, templates=templates)
+
+    def encode_templates(self, list_of_smarts, batch_size=32, njobs=1):
+        """encodes a list of templates to a numpy array"""
+        x = np.empty((len(list_of_smarts), self.config.hopf_asso_dim))
+        for b in range(0, len(list_of_smarts), batch_size):
+            # compute template fingerprints
+            template_list = list_of_smarts[b:min(b+batch_size, len(list_of_smarts))]
+            templ_imp_emb = self.update_template_embedding(which=self.config.template_fp_type, 
+                                fp_size=self.config.fp_size, radius=self.config.fp_radius, learnable=False, njobs=njobs, 
+                                only_templates_in_batch=True, template_list=template_list, verbose=False)
+            templ_imp_emb = torch.from_numpy(templ_imp_emb).float().to(self.config.device)
+            bx = self.template_encoder(templ_imp_emb).detach().cpu().numpy()
+
+            x[b:min(b+batch_size, len(list_of_smarts))] = bx
+        return x
+
+    def encode_smiles(self, list_of_smiles, batch_size=32, njobs=1):
+        """encodes a list of smiles to a numpy array"""
+        x = np.empty((len(list_of_smiles), self.config.hopf_asso_dim))
+        for b in range(0, len(list_of_smiles), batch_size):
+            # compute template fingerprints
+            smiles_list = list_of_smiles[b:min(b+batch_size, len(list_of_smiles))]
+            mol_imp_emb = self.mol_encoder.convert_smiles_to_tensor(smiles_list)
+            bx = self.mol_encoder(mol_imp_emb).detach().cpu().numpy()
+
+            x[b:min(b+batch_size, len(list_of_smiles))] = bx
+        return x
 
     def forward(self, m, templates=None):
         """
